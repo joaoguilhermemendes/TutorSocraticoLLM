@@ -27,7 +27,7 @@ Built with FastAPI + Jinja2, using the Groq API (`llama-3.3-70b-versatile`) as t
 TutorSocraticoLLM/
 ├── README.md
 ├── LICENSE                          # MIT
-├── .env                             # variáveis de ambiente (não versionado)
+├── .env.example                    # modelo de variáveis de ambiente (copiar para .env)
 ├── .gitignore
 ├── requirements.txt
 ├── schema.sql                       # esquema das 4 tabelas do Supabase
