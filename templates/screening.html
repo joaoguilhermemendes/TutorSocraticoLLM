@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="{{ lang }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ ui.screening_title }} — SocraticTutor</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Georgia, serif;
+      background: #f5f3ef;
+      color: #1a1a1a;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+    }
+    .container {
+      background: white;
+      max-width: 680px;
+      width: 100%;
+      padding: 3rem;
+      border: 1px solid #ddd;
+    }
+    .label {
+      font-family: monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.1em;
+      color: #888;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+    }
+    h1 { font-size: 1.4rem; font-weight: normal; margin-bottom: 0.5rem; }
+    .subtitle { font-size: 0.9rem; color: #666; margin-bottom: 2.5rem; }
+    .field { margin-bottom: 1.75rem; }
+    label { display: block; font-size: 0.9rem; margin-bottom: 0.5rem; color: #333; }
+    select, input[type="number"] {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      border: 1px solid #ccc;
+      background: white;
+      font-size: 0.9rem;
+      font-family: Georgia, serif;
+      color: #1a1a1a;
+      appearance: none;
+    }
+    select:focus, input:focus { outline: 2px solid #1a1a1a; border-color: #1a1a1a; }
+    .radio-group { display: flex; flex-direction: column; gap: 0.5rem; }
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.9rem;
+      cursor: pointer;
+      margin: 0;
+    }
+    .radio-group input[type="radio"] { width: 16px; height: 16px; flex-shrink: 0; }
+    .likert { display: flex; gap: 1.25rem; justify-content: center; align-items: center; flex-wrap: nowrap; }
+    .likert-option { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
+    .likert-option input[type="radio"] { width: 18px; height: 18px; }
+    .likert-option span { font-size: 0.75rem; color: #666; font-family: monospace; }
+    .likert-labels {
+      display: flex;
+      justify-content: center;
+      gap: 5.25rem;
+      font-size: 0.75rem;
+      color: #888;
+      margin-top: 0.6rem;
+    }
+    hr { border: none; border-top: 1px solid #eee; margin: 2rem 0; }
+    button {
+      background: #1a1a1a;
+      color: white;
+      border: none;
+      padding: 0.85rem 2.5rem;
+      font-size: 0.9rem;
+      font-family: monospace;
+      letter-spacing: 0.05em;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover { background: #333; }
+    @media (max-width: 640px) {
+      body { padding: 1rem; align-items: flex-start; }
+      .container { max-width: 100%; padding: 1.25rem; }
+      .label { margin-bottom: 1rem; font-size: 0.68rem; }
+      h1 { font-size: 1.2rem; }
+      .subtitle { font-size: 0.86rem; margin-bottom: 1.25rem; }
+      .field { margin-bottom: 1.1rem; }
+      label, select, input[type="number"] { font-size: 0.9rem; }
+      .radio-group label { font-size: 0.86rem; line-height: 1.35; }
+      .likert { gap: 0.75rem; }
+      .likert-labels { justify-content: space-between; gap: 0.6rem; font-size: 0.68rem; }
+      .likert-labels span { max-width: 45%; }
+      button { padding: 0.8rem 1rem; font-size: 0.85rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="label">{{ ui.screening_stage }}</div>
+    <h1>{{ ui.screening_title }}</h1>
+    <p class="subtitle">{{ ui.screening_subtitle }}</p>
+
+    <form method="POST" action="/screening" id="screening-form">
+
+      <div class="field">
+        <label for="age">{{ ui.screening_age }}</label>
+        <input type="number" id="age" name="age" min="15" max="80" placeholder="{{ ui.screening_age_placeholder }}" required>
+      </div>
+
+      <div class="field">
+        <label for="education">{{ ui.screening_education }}</label>
+        <select id="education" name="education" required>
+          <option value="" disabled selected>{{ ui.screening_education_select }}</option>
+          <option value="ensino_medio">{{ ui.education_high_school }}</option>
+          <option value="superior_incompleto">{{ ui.education_undergrad_incomplete }}</option>
+          <option value="superior_completo">{{ ui.education_undergrad_complete }}</option>
+          <option value="pos_graduacao">{{ ui.education_postgraduate }}</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label>{{ ui.screening_prior }}</label>
+        <div class="radio-group">
+          <label><input type="radio" name="prior_knowledge" value="no" required> {{ ui.screening_prior_no }}</label>
+          <label><input type="radio" name="prior_knowledge" value="heard"> {{ ui.screening_prior_heard }}</label>
+          <label><input type="radio" name="prior_knowledge" value="yes"> {{ ui.screening_prior_yes }}</label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>{{ ui.screening_probability }}</label>
+        <div class="likert">
+          {% for i in range(1, 6) %}
+          <div class="likert-option">
+            <input type="radio" name="probability_familiarity" value="{{ i }}" required>
+            <span>{{ i }}</span>
+          </div>
+          {% endfor %}
+        </div>
+        <div class="likert-labels">
+          <span>{{ ui.screening_probability_low }}</span>
+          <span>{{ ui.screening_probability_high }}</span>
+        </div>
+      </div>
+
+      <hr>
+      <button type="submit" id="screening-submit">{{ ui.screening_continue }}</button>
+    </form>
+  </div>
+  <script>
+    const screeningForm = document.getElementById("screening-form");
+    const screeningSubmit = document.getElementById("screening-submit");
+    let screeningSubmitting = false;
+
+    screeningForm.addEventListener("submit", (event) => {
+      if (screeningSubmitting) {
+        event.preventDefault();
+        return;
+      }
+      screeningSubmitting = true;
+      screeningSubmit.disabled = true;
+      screeningSubmit.textContent = "{{ ui.screening_submitting }}";
+    });
+
+    window.addEventListener("keydown", (event) => {
+      if (!screeningSubmitting) return;
+      if (event.key === "F5" || ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === "r")) {
+        event.preventDefault();
+      }
+    });
+  </script>
+</body>
+</html>

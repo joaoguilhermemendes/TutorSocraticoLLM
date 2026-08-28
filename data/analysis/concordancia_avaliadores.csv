@@ -1,0 +1,6 @@
+metrica,valor
+Kappa de Cohen (nao ponderado),0.788
+Kappa ponderado (linear),0.848
+Kappa ponderado (quadratico),0.885
+Concordancia exata (%),83.3
+N casos,30.0

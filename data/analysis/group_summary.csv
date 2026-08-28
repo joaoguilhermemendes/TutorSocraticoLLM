@@ -1,0 +1,3 @@
+group_name,participants_started,completed_sessions,answered_evaluation,median_human_rubric,mean_human_rubric,median_final_rubric,mean_final_rubric,median_turn_count,mean_turn_count,median_q4_frustration,mean_q4_frustration
+expository,22,13,12,1.0,1.5,0.0,0.3076923076923077,4.0,5.055555555555555,2.5,3.1666666666666665
+socratic,14,5,5,2.0,2.0833333333333335,1.5,1.8333333333333333,7.0,13.0,4.0,3.6

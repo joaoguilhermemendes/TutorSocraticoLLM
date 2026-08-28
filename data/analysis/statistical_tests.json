@@ -1,0 +1,118 @@
+{
+  "mann_whitney_human_rubric": {
+    "test": "Mann-Whitney U: rubrica humana consensuada",
+    "statistic": 132.0,
+    "p_value": 0.30852290886369704,
+    "effect_size": 0.22222222222222232,
+    "n_socratic": 12,
+    "n_expository": 18,
+    "note": ""
+  },
+  "mann_whitney_ia_rubric": {
+    "test": "Mann-Whitney U: rubrica IA (referência)",
+    "statistic": 119.5,
+    "p_value": 0.01372142811651991,
+    "effect_size": 0.5320512820512822,
+    "n_socratic": 12,
+    "n_expository": 13,
+    "note": ""
+  },
+  "mann_whitney_turn_count": {
+    "test": "Mann-Whitney U: número de turnos",
+    "statistic": 140.0,
+    "p_value": 0.17850374776955114,
+    "effect_size": 0.2962962962962963,
+    "n_socratic": 12,
+    "n_expository": 18,
+    "note": ""
+  },
+  "mann_whitney_q4_frustration": {
+    "test": "Mann-Whitney U: frustração Q4",
+    "statistic": 33.5,
+    "p_value": 0.7406796300109171,
+    "effect_size": 0.1166666666666667,
+    "n_socratic": 5,
+    "n_expository": 12,
+    "note": ""
+  },
+  "spearman_frustration_vs_turns": {
+    "test": "Spearman: frustração vs número de turnos",
+    "rho": -0.07229805352917733,
+    "p_value": 0.7827421270368184,
+    "n": 17,
+    "note": ""
+  },
+  "spearman_prior_knowledge_vs_human_rubric": {
+    "test": "Spearman: conhecimento prévio vs rubrica humana",
+    "rho": 0.22912494793674582,
+    "p_value": 0.22325199265722764,
+    "n": 30,
+    "note": ""
+  },
+  "spearman_prob_familiarity_vs_human_rubric": {
+    "test": "Spearman: familiaridade com probabilidade vs rubrica humana",
+    "rho": 0.22172550618512785,
+    "p_value": 0.23897013082891938,
+    "n": 30,
+    "note": ""
+  },
+  "fisher_completed": {
+    "test": "Fisher exato: sessão concluída",
+    "odds_ratio": 0.38461538461538464,
+    "p_value": 0.3052667214779707,
+    "table": [
+      [
+        5,
+        9
+      ],
+      [
+        13,
+        9
+      ]
+    ]
+  },
+  "fisher_evaluation": {
+    "test": "Fisher exato: questionário respondido",
+    "odds_ratio": 0.46296296296296297,
+    "p_value": 0.3217265560768003,
+    "table": [
+      [
+        5,
+        9
+      ],
+      [
+        12,
+        10
+      ]
+    ]
+  },
+  "fisher_with_turns": {
+    "test": "Fisher exato: ao menos 1 turno",
+    "odds_ratio": 1.3333333333333333,
+    "p_value": 1.0,
+    "table": [
+      [
+        12,
+        2
+      ],
+      [
+        18,
+        4
+      ]
+    ]
+  },
+  "data_quality": {
+    "participants_total": 36,
+    "evaluation_rows_raw": 19,
+    "evaluation_unique_participants": 17,
+    "participants_with_turns": 30,
+    "participants_with_human_rubric": 30,
+    "participants_with_ia_rubric": 25,
+    "ia_vs_human_concordance_exact": 9,
+    "ia_vs_human_comparable": 25,
+    "duplicate_evaluation_participants": {
+      "d2ad51a3-0cbb-4d36-96ce-60fb5b02f4fd": 2,
+      "04893362-e591-4d32-b717-8e0c5dfae4a1": 2
+    }
+  }
+}
